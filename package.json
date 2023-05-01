@@ -1,0 +1,14 @@
+{
+  "name": "abdibot",
+  "version": "1.0.0",
+  "description": "Administration bot for school server of BSZ III",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EdwinShdw",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.9.0"
+  }
+}
