@@ -1,0 +1,42 @@
+{
+    "role_AE": {
+        "name": "Anwendungsentwickler",
+        "id": "1101235617729351680"
+    },
+    "role_SI": {
+        "name": "Systemintegrator",
+        "id": "1101235624196968448"
+    },
+    "role_DPA": {
+        "name": "Daten- und Prozessanalysten",
+        "id": "1101235792476635217"
+    },
+    "role_DV": {
+        "name": "Digitale Vernetzer",
+        "id": "1101235862685098015"
+    },
+    "role_ITGS10": {
+        "name": "ITGS 10",
+        "id": "1101235067843522610"
+    },
+    "role_ITFI11": {
+        "name": "ITFI 11",
+        "id": "1101235154275553320"
+    },
+    "role_ITKL11": {
+        "name": "ITKL 11",
+        "id": "1101235255442165881"
+    },
+    "role_ITAE12": {
+        "name": "ITAE 12",
+        "id": "1101237297665548398"
+    },
+    "role_ITSI12": {
+        "name": "ITSI 12",
+        "id": "1101237376220672131"
+    },
+    "role_ITKS12": {
+        "name": "ITKS 12",
+        "id": "1101237432990568548"
+    }
+}
