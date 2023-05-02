@@ -3,14 +3,10 @@ const { SlashCommandBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, Permi
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('self-set-role')
-    .setDescription('Init area where members can set there role'),
+    .setDescription('Init area where members can set there role')
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
     async execute(interaction) {
-        if(!interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
-            interaction.reply({ content: "Dieser Command kann nur von Admins ausgeführt werden", ephemeral: true });
-            return;
-        }
-
         const channel = await interaction.guild.channels.fetch(interaction.channelId);
         const button_AE = new ButtonBuilder()
         .setCustomId('role_AE')
