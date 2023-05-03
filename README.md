@@ -11,6 +11,7 @@
     ```shell
         npm install
     ```
+    Also, make sure that [Node.js](https://nodejs.org/) 16.9.0 or newer is installed on your machine as `discord.js` requires this.
 
 3. **Configure environment**
     
@@ -26,7 +27,7 @@
 
 4. **Run bot**
 
-    Start the bot from the root of the directory via `node.js`:
+    Start the bot from the root of the directory via `Node.js`:
     ```shell
     node index.js
     ```
