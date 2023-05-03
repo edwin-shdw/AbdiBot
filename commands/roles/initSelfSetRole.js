@@ -73,7 +73,6 @@ module.exports = {
 
         interaction.reply({ content: "Initialized", ephemeral: true });
         channel.send({ content: "**Welchen Beruf hast du?**", components: [jobRow] });
-        channel.send({ content: "**In welcher Klassenstufe bist du?**", components: [classRow1] });
-        channel.send({ components: [classRow2] });
+        channel.send({ content: "**In welcher Klassenstufe bist du?**", components: [classRow1, classRow2] });
     }
 }
