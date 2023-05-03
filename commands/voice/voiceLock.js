@@ -1,4 +1,4 @@
-const { EmbedBuilder, PermissionsBitField, SlashCommandBuilder, channelLink } = require('discord.js');
+const { EmbedBuilder, PermissionsBitField, SlashCommandBuilder } = require('discord.js');
 const { generatorChannels } = require('../../assets/channels.json');
 const { descriptions } = require('../../assets/commands/voiceLock.json');
 
