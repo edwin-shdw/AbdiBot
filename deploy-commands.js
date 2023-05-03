@@ -27,10 +27,10 @@ const rest = new REST().setToken(botToken);
     try{
         console.log(`Started refreshing ${commands.length} application (/) commands.`);
         const data = await rest.put(
-            Routes.applicationCommands(applicationID, guildID),
+            Routes.applicationGuildCommands(applicationID, guildID),
             { body: commands },
         );
-        console.log(`Successfully reloaded ${data.length} global application (/) commands.`);
+        console.log(`Successfully reloaded ${data.length} application (/) commands.`);
     } catch(error) {
         console.error(error);
     }
