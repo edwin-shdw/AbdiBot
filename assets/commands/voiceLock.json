@@ -1,0 +1,9 @@
+{
+    "descriptions": {
+        "help": "Zeigt diese Hilfe Nachricht.",
+        "lock": "Sperrt deinen Voice Channel, damit keine neuen User mehr joinen können.",
+        "unlock": "Entsperrt deinen Voice Channel, damit neue User joinen können.",
+        "kick": "Kick einen User aus deinem Voice Channel.",
+        "limit": "Legt ein Limit an maximalen Useren die in dein Voice Channel joinen können. 0 als Eingabe entfernt das Limit."
+    }
+}

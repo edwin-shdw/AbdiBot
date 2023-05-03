@@ -1,5 +1,6 @@
 const { EmbedBuilder, PermissionsBitField, SlashCommandBuilder, channelLink } = require('discord.js');
 const { generatorChannels } = require('../../assets/channels.json');
+const { descriptions } = require('../../assets/commands/voiceLock.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -8,7 +9,8 @@ module.exports = {
     .addSubcommand(subcommand =>
         subcommand
             .setName('help')
-            .setDescription('Zeigt alle /voice Commands'))
+            .setDescription('Zeigt alle /voice Commands')
+    )
     .addSubcommand(subcommand =>
         subcommand
             .setName('lock')
@@ -68,15 +70,16 @@ module.exports = {
 }
 
 async function help(interaction) {
+    const commands = await interaction.guild.commands.fetch();
+    const voiceCommand = commands.find(command => command.name === "voice");
+
     const embed = new EmbedBuilder()
     .setTitle(':loud_sound: Auto-Voice Help')
-    .setDescription('Eine Liste mit Commands mit denen man sein Auto-Created-Channel anpassen kann.')
+    .setDescription('Hier ist eine Liste mit Commands mit denen man sein Auto-Created-Channel anpassen kann.')
     .addFields(
-        { name: '</voice lock:1102955081575452782>', value: '```Sperrt deinen Voice Channel, damit keine neuen User mehr joinen können.```' },
-        { name: '</voice unlock:1102955081575452782>', value: '```Entsperrt deinen Voice Channel, damit neue User joinen können.```' },
-        { name: '</voice kick:1102955081575452782>', value: '```Kick einen User aus deinem Voice Channel.```' },
-        { name: '</voice limit:1102955081575452782>', value: '```Legt ein Limit an maximalen Useren die in dein Voice Channel joinen können. 0 als Eingabe entfernt das Limit.```' },
-        { name: '</voice help:1102955081575452782>', value: '```Zeigt diese Hilfe Nachricht.```' },
+        voiceCommand.options.map(option => {
+            return { name: `</voice ${option.name}:${voiceCommand.id}>`, value: ('```' + descriptions[option.name] + '```') };
+        }),
     )
 
     if(generatorChannels.find(c => c.parentId === interaction.channel?.parentId)) {
