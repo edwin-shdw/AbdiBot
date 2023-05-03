@@ -4,7 +4,7 @@ const { ActivityType, Client, Collection, GatewayIntentBits } = require('discord
 const { botToken } = require('./config.json');
 
 const client = new Client({
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildMembers],
     presence: {
         activities: [{
             name: "Visual Studio Code",
