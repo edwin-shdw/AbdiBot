@@ -4,6 +4,11 @@
             "name": "Lernräume",
             "parentId": "1102872706417971233",
             "initChannelId": "1102883901392830484"
+        },
+        {
+            "name": "Gaming",
+            "parentId": "1101253734287286282",
+            "initChannelId": "1104083129523781774"
         }
     ]
 }
