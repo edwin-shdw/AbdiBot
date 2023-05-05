@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, PermissionFlagsBits } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -8,6 +8,8 @@ module.exports = {
 
     async execute(interaction) {
         const channel = await interaction.guild.channels.fetch(interaction.channelId);
+
+        // JOB ROLES
         const button_AE = new ButtonBuilder()
         .setCustomId('role_AE')
         .setEmoji('<:activeDeveloperBadge:1102664920543264768>')
@@ -35,6 +37,12 @@ module.exports = {
         const jobRow = new ActionRowBuilder()
         .addComponents(button_AE, button_SI, button_DPA, button_DV)
 
+        const jobEmbed = new EmbedBuilder()
+        .setColor(0x5865F2)
+        .setTitle('**Welchen Beruf hast du?**')
+
+
+        // CLASS ROLES
         const button_ITGS10 = new ButtonBuilder()
         .setCustomId('role_ITGS10')
         .setLabel('ITGS 10')
@@ -71,8 +79,28 @@ module.exports = {
         const classRow2 = new ActionRowBuilder()
         .addComponents(button_ITAE12, button_ITSI12, button_ITKS12)
 
+        const classEmbed = new EmbedBuilder()
+        .setColor(0x5865F2)
+        .setTitle('**In welcher Klassenstufe bist du?**')
+
+
+        // GAMER ROLE
+        const button_Gamer = new ButtonBuilder()
+        .setCustomId('role_Gamer')
+        .setLabel("I'm a Gamer!")
+        .setStyle(ButtonStyle.Secondary)
+
+        const gamingRow = new ActionRowBuilder()
+        .addComponents(button_Gamer)
+
+        const gamerEmbed = new EmbedBuilder()
+        .setColor(0x5865F2)
+        .setTitle('**Mit der Gamer Rolle wirst du benachrichtigt, wenn jemand zocken will!**')
+
+
         interaction.reply({ content: "Initialized", ephemeral: true });
-        channel.send({ content: "**Welchen Beruf hast du?**", components: [jobRow] });
-        channel.send({ content: "**In welcher Klassenstufe bist du?**", components: [classRow1, classRow2] });
+        channel.send({ embeds: [jobEmbed], components: [jobRow] });
+        channel.send({ embeds: [classEmbed], components: [classRow1, classRow2] });
+        channel.send({ embeds: [gamerEmbed], components: [gamingRow] });
     }
 }
