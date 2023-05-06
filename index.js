@@ -7,8 +7,8 @@ const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildMembers],
     presence: {
         activities: [{
-            name: "Visual Studio Code",
-            type: ActivityType.Playing,
+            name: "Source Code",
+            type: ActivityType.Watching,
         }],
     },
 });
