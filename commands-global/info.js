@@ -6,6 +6,7 @@ module.exports = {
     .setDescription('Zeige Infos über den Bot'),
 
     async execute(interaction) {
+        const silently = interaction.guild ? true : false;
         const embed = new EmbedBuilder()
         .setColor(0x5865F2)
         .setTitle('Info')
@@ -23,6 +24,6 @@ module.exports = {
             { name: '<:offline:1106630514686820382> Offline', value: 'Offline' },
         )
 
-        interaction.reply({ embeds: [embed] });
+        interaction.reply({ embeds: [embed], ephemeral: silently });
     }
 }
