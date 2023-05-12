@@ -33,7 +33,11 @@
     ```
     To make development easier and less painfull it's encourage to use [nodemon](https://www.npmjs.com/package/nodemon) or [node-supervisor](https://www.npmjs.com/package/supervisor) which will restart the node application when file changes are detected.
 
-5. **Usefull links**
+5. **Developing**
+
+    Make sure to set the bot's status to `idle` or `dnd` while testing or developing to clarify that the bot could be restricted in use.
+
+6. **Usefull links**
     - [discord.js](https://discord.js.org/#/)
     - [discord.js Guide](https://discordjs.guide/#before-you-begin)
     - [Discord Developer Portal](https://discord.com/developers)
