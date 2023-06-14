@@ -4,7 +4,8 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('self-set-role')
         .setDescription('Init area where members can set there role')
-        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+        .setDMPermission(false),
 
     async execute(interaction) {
         const channel = await interaction.guild.channels.fetch(interaction.channelId);

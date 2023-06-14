@@ -4,7 +4,8 @@ const { descriptions } = require('../../assets/commands/help.json');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('help')
-        .setDescription('Zeigt eine Liste mit allen Commands und Erklärungen'),
+        .setDescription('Zeigt eine Liste mit allen Commands und Erklärungen')
+        .setDMPermission(false),
 
     async execute(interaction) {
         const commands = await interaction.guild.commands.fetch();

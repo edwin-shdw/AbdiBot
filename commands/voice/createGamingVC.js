@@ -16,7 +16,8 @@ module.exports = {
             option
                 .setName('notify')
                 .setDescription('Erstellt eine Benachrichtigung, dass du Spielen willst'),
-        ),
+        )
+        .setDMPermission(false),
 
     async execute(interaction) {
         const member = interaction.member;

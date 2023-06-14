@@ -127,7 +127,8 @@ module.exports = {
                         .setMinValue(0)
                         .setMaxValue(99),
                 ),
-        ),
+        )
+        .setDMPermission(false),
 
     async execute(interaction) {
         switch(interaction.options.getSubcommand()) {
