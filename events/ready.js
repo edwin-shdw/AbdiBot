@@ -18,10 +18,11 @@ module.exports = {
                     });
                 });
                 mode++;
-            } else if(mode == 1) {
-                client.user.setActivity("Source Code", { type: ActivityType.Watching });
+            }
+            else if(mode == 1) {
+                client.user.setActivity('Source Code', { type: ActivityType.Watching });
                 mode--;
             }
         }, 90_000);
-    }
-}
+    },
+};

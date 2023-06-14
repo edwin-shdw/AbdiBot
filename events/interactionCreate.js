@@ -14,21 +14,25 @@ module.exports = {
 
             try{
                 await command.execute(interaction);
-            } catch(error) {
+            }
+            catch(error) {
                 console.log(`Error executing ${interaction.commandName}`);
                 console.log(error);
                 if(interaction.replied || interaction.deferred) {
-                    await interaction.followUp({ content: "There was an error while executing this command!", ephemeral: true });
-                } else {
-                    await interaction.reply({ content: "There was an error while executing this command!", ephemeral: true });
+                    await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+                }
+                else {
+                    await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
                 }
             }
-        } else if(interaction.isButton()) {
+        }
+        else if(interaction.isButton()) {
             try{
                 await roles.selfSetRole(interaction);
-            } catch(error) {
+            }
+            catch(error) {
                 console.log(error);
             }
         }
-    }
-}
+    },
+};

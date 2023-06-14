@@ -1,4 +1,4 @@
-const fs  = require('node:fs');
+const fs = require('node:fs');
 const path = require('node:path');
 const { ActivityType, Client, Collection, GatewayIntentBits } = require('discord.js');
 const { botToken } = require('./config.json');
@@ -7,7 +7,7 @@ const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildMembers],
     presence: {
         activities: [{
-            name: "Source Code",
+            name: 'Source Code',
             type: ActivityType.Watching,
         }],
     },
@@ -26,7 +26,8 @@ for(const folder of commandFolders) {
         const command = require(filePath);
         if('data' in command && 'execute' in command) {
             client.commands.set(command.data.name, command);
-        } else {
+        }
+        else {
             console.log(`[WARNING] The command at ${filePath} is missing a required 'data' or 'execute' property.`);
         }
     }
@@ -41,7 +42,8 @@ for(const file of globalCommandFiles) {
     const command = require(filePath);
     if('data' in command && 'execute' in command) {
         client.commands.set(command.data.name, command);
-    } else {
+    }
+    else {
         console.log(`[WARNING] The command at ${filePath} is missing a required 'data' or 'execute' property.`);
     }
 }
@@ -55,9 +57,10 @@ for(const file of eventFile) {
     const filePath = path.join(eventsPath, file);
     const event = require(filePath);
     if(event.once) {
-        client.once(event.name, (...args) => {event.execute(...args)});
-    } else {
-        client.on(event.name, (...args) => {event.execute(...args)});
+        client.once(event.name, (...args) => {event.execute(...args);});
+    }
+    else {
+        client.on(event.name, (...args) => {event.execute(...args);});
     }
 }
 
