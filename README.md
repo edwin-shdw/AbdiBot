@@ -15,27 +15,31 @@
 
 3. **Configure environment**
     
-    Create a `config.js` file in the directory root and fill all needed values:
-    ```json
-    {
-        "applicationID": "application-ID",
-        "botToken": "token",
-        "guildID": "ID-of-guild"
-    }
-    ```
-    This file contains sensitive information and should not be tracked by git. Also don't share it with others as long as they don't contribute to this project.
+    Rename the `config.public.json` file to `config.json` and fill all needed values.
+    This file contains sensitive information and should not be tracked by git.
+    Also don't share it with others as long as they don't contribute to this project.
 
 4. **Run bot**
 
-    Start the bot from the root of the directory via `Node.js`:
+    Start the bot with the start script:
     ```shell
-    node index.js
+    npm start
     ```
-    To make development easier and less painfull it's encourage to use [nodemon](https://www.npmjs.com/package/nodemon) or [node-supervisor](https://www.npmjs.com/package/supervisor) which will restart the node application when file changes are detected.
+
+    To make development easier and less painfull you can start the bot in dev mode:
+    ```shell
+    npm run develop
+    ```
+    This will start the bot with [node-supervisor](https://www.npmjs.com/package/supervisor) which will restart the node application whenever file changes are detected.
 
 5. **Developing**
 
     Make sure to set the bot's status to `idle` or `dnd` while testing or developing to clarify that the bot could be restricted in use.
+
+    Registering new commands to the Discord API can be done with the deploy script:
+    ```shell
+    npm run deploy
+    ```
 
 6. **Usefull links**
     - [discord.js](https://discord.js.org/#/)
