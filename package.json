@@ -4,6 +4,9 @@
   "description": "Administration bot for school server of BSZ III",
   "main": "index.js",
   "scripts": {
+    "start": "node ./index.js",
+    "develop": "supervisor ./index.js",
+    "deploy": "node ./deploy-commands.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "EdwinShdw",
