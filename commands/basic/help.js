@@ -8,7 +8,7 @@ module.exports = {
         .setDMPermission(false),
 
     async execute(interaction) {
-        const commands = await interaction.guild.commands.fetch();
+        const commands = await interaction.client.application.commands.fetch();
 
         const embed = new EmbedBuilder()
             .setTitle(':information_source: Ich bin hier um zu helfen!')

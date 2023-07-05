@@ -3,7 +3,7 @@ const { generatorChannels } = require('../../assets/channels.json');
 const { descriptions } = require('../../assets/commands/voiceLock.json');
 
 async function help(interaction) {
-    const commands = await interaction.guild.commands.fetch();
+    const commands = await interaction.client.application.commands.fetch();
     const voiceCommand = commands.find(command => command.name === 'voice');
 
     const embed = new EmbedBuilder()
