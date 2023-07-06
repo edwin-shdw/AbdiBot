@@ -4,6 +4,7 @@
         "gaming": "Erstellt einen Gaming Voice Channel mit dem Namen deines Spieles. Bei bedarf werden alle mit der Rolle benachrichtigt das du spielen willst.",
         "info": "Zeigt Infos über Abdi den Bot.",
         "ping": "Antwortet mit 'Pong!' (Ist das 'Hello World!' der Discord Bot Entwickler).",
-        "voice": "Für Hilfe zum /voice Command, solltest du den /voice help Command verwenden."
+        "voice": "Für Hilfe zum /voice Command, solltest du den /voice help Command verwenden.",
+        "msg-beautyfier": "Embede deine Nachricht um sie leserlicher und stylischer zu machen"
     }
 }
