@@ -11,7 +11,11 @@ module.exports = {
         const member = interaction.member;
         const roleId = interaction.customId;
         const role = await interaction.guild.roles.fetch(roles[roleId].id);
-        if(member.roles.cache.some(r => r === role)) {
+
+        if(!role) {
+            reply('Diese Rolle existiert anscheinend nicht mehr :(');
+        }
+        else if(member.roles.cache.some(r => r === role)) {
             member.roles.remove(role);
             reply(`Ich hab die Rolle ${role.name} entfernt!`);
         }
