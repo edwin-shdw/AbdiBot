@@ -1,5 +1,5 @@
 import { ButtonInteraction, GuildMember, InteractionResponse, Role } from 'discord.js';
-const roles = require('../data/roles.json');
+import roles from '../data/roles.json';
 
 module.exports = {
     async selfSetRole(interaction: ButtonInteraction) {
@@ -15,7 +15,7 @@ module.exports = {
         }
 
         const member = interaction.member as GuildMember;
-        const roleId = interaction.customId;
+        const roleId = interaction.customId as keyof typeof roles;
         const role = await interaction.guild?.roles.fetch(roles[roleId].id);
         if(!role) {
             reply('Diese Rolle existiert anscheinend nicht mehr :(');
