@@ -4,9 +4,9 @@
   "description": "Administration bot for school server of BSZ III",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
-    "develop": "supervisor ./index.js",
-    "deploy": "node ./deploy-commands.js",
+    "start": "node ./dist/index.js",
+    "develop": "supervisor ./dist/index.js",
+    "deploy": "node ./dist/deploy-commands.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "EdwinShdw",
@@ -15,7 +15,7 @@
     "discord.js": "^14.9.0"
   },
   "devDependencies": {
-    "eslint": "^8.42.0",
+    "eslint": "^8.47.0",
     "supervisor": "^0.12.0",
     "typescript": "^5.1.6"
   }

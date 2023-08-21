@@ -1,0 +1,6 @@
+{
+    "applicationID": "application-ID",
+    "botToken": "token",
+    "guildID": "ID-of-guild",
+    "roleChannelID": "ID-of-channel where members can set their roles"
+}
