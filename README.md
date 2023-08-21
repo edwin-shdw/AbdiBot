@@ -11,13 +11,13 @@
     ```shell
         npm install
     ```
-    Also, make sure that [Node.js](https://nodejs.org/) 16.9.0 or newer is installed on your machine as `discord.js` requires this.
+    Also, make sure that [Node.js](https://nodejs.org/) 16.9.0 or newer is installed on your machine
+    as `discord.js` requires this.
 
 3. **Configure environment**
     
-    Rename the `config.public.json` file to `config.json` and fill all needed values.
-    This file contains sensitive information and should not be tracked by git.
-    Also don't share it with others as long as they don't contribute to this project.
+    Copy and rename the `config.public.json` file to `config.json` (`src/configs/*`) and fill all
+    needed values. This file contains sensitive information and should not be tracked by git.
 
 4. **Run bot**
 
@@ -30,13 +30,13 @@
     ```shell
     npm run develop
     ```
-    This will start the bot with [node-supervisor](https://www.npmjs.com/package/supervisor) which will restart the node application whenever file changes are detected.
+    This will start the bot with [node-supervisor](https://www.npmjs.com/package/supervisor) which
+    will restart the node application whenever file changes are detected.
+    (Currently requires `npx tsc --watch` to run in parallel)
 
-5. **Developing**
+5. **Deployment**
 
-    Make sure to set the bot's status to `idle` or `dnd` while testing or developing to clarify that the bot could be restricted in use.
-
-    Registering new commands to the Discord API can be done with the deploy script:
+    Command registration to the Discord API can be done with the `deploy` script:
     ```shell
     npm run deploy
     ```
