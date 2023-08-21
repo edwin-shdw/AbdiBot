@@ -12,7 +12,12 @@ module.exports = {
                 + 'Solltest du jedoch einen Bot wie mich für deinen Server wünschen, dann solltest du dich bei [Edwin](https://www.discordapp.com/users/698962714000752782) melden!',
             );
 
-        guild.client.users.send(guild.ownerId, { embeds: [embed] });
+        try {
+            guild.client.users.send(guild.ownerId, { embeds: [embed] });
+        }
+        catch {
+            console.log('Could not send message to guild owner');
+        }
         guild.leave();
     },
 };

@@ -14,6 +14,11 @@ module.exports = {
             .addFields(
                 { name: 'Rollen:', value: `${roleChannel}` },
             );
-        client.users.send(member.user.id, { embeds: [embed] });
+        try {
+            client.users.send(member.user.id, { embeds: [embed] });
+        }
+        catch {
+            console.log(`Could not message ${member.user.username}`);
+        }
     },
 };
