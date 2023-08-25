@@ -1,4 +1,14 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+import { 
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    CommandInteraction,
+    EmbedBuilder,
+    MessageActionRowComponentBuilder,
+    PermissionFlagsBits,
+    SlashCommandBuilder,
+    TextBasedChannel,
+} from 'discord.js';
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -7,8 +17,8 @@ module.exports = {
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .setDMPermission(false),
 
-    async execute(interaction) {
-        const channel = await interaction.guild.channels.fetch(interaction.channelId);
+    async execute(interaction: CommandInteraction) {
+        const channel = await interaction.guild?.channels.fetch(interaction.channelId) as TextBasedChannel;
 
         // JOB ROLES
         const button_AE = new ButtonBuilder()
@@ -35,7 +45,7 @@ module.exports = {
             .setLabel('Digitale Vernetzer/-in')
             .setStyle(ButtonStyle.Secondary);
 
-        const jobRow = new ActionRowBuilder()
+        const jobRow = new ActionRowBuilder<MessageActionRowComponentBuilder>()
             .addComponents(button_AE, button_SI, button_DPA, button_DV);
 
         const jobEmbed = new EmbedBuilder()
@@ -74,10 +84,10 @@ module.exports = {
             .setLabel('ITKS 12')
             .setStyle(ButtonStyle.Secondary);
 
-        const classRow1 = new ActionRowBuilder()
+        const classRow1 = new ActionRowBuilder<MessageActionRowComponentBuilder>()
             .addComponents(button_ITGS10, button_ITFI11, button_ITKL11);
 
-        const classRow2 = new ActionRowBuilder()
+        const classRow2 = new ActionRowBuilder<MessageActionRowComponentBuilder>()
             .addComponents(button_ITAE12, button_ITSI12, button_ITKS12);
 
         const classEmbed = new EmbedBuilder()
@@ -91,17 +101,25 @@ module.exports = {
             .setLabel("I'm a Gamer!")
             .setStyle(ButtonStyle.Secondary);
 
-        const gamingRow = new ActionRowBuilder()
+        const gamingRow = new ActionRowBuilder<MessageActionRowComponentBuilder>()
             .addComponents(button_Gamer);
 
         const gamerEmbed = new EmbedBuilder()
             .setColor(0x5865F2)
             .setTitle('**Mit der Gamer Rolle wirst du benachrichtigt, wenn jemand zocken will!**');
 
+        interaction.reply({ content: 'Initialisiert', ephemeral: true });
+        
+        if(!channel) {
+            interaction.reply({
+                content: 'Dieser command funktioniert nur in einem Server Chat!',
+                ephemeral: true,
+            });
+            return;
+        }
 
-        interaction.reply({ content: 'Initialized', ephemeral: true });
         channel.send({ embeds: [jobEmbed], components: [jobRow] });
         channel.send({ embeds: [classEmbed], components: [classRow1, classRow2] });
         channel.send({ embeds: [gamerEmbed], components: [gamingRow] });
-    },
-};
+    }
+}

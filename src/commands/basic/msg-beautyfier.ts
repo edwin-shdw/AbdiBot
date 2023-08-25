@@ -1,18 +1,22 @@
-const {
+import { 
     ActionRowBuilder,
+    CommandInteraction,
     EmbedBuilder,
+    GuildMember,
+    ModalActionRowComponentBuilder,
+    ModalBuilder,
+    ModalSubmitInteraction,
     SlashCommandBuilder,
     TextInputBuilder,
     TextInputStyle,
-    ModalBuilder,
-} = require('discord.js');
+} from 'discord.js';
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('msg-beautyfier')
         .setDescription('Embede deine Nachricht um sie leserlicher und stylischer zu machen'),
 
-    async execute(interaction) {
+    async execute(interaction: CommandInteraction) {
         const modal = new ModalBuilder()
             .setCustomId('msg-beautyfier')
             .setTitle('Message Beautyfier');
@@ -30,26 +34,28 @@ module.exports = {
             .setPlaceholder('Ich muss euch berichten...')
             .setStyle(TextInputStyle.Paragraph);
 
-        const row1 = new ActionRowBuilder().addComponents(title);
-        const row2 = new ActionRowBuilder().addComponents(message);
+        const row1 = new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(title);
+        const row2 = new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(message);
 
         modal.addComponents(row1, row2);
 
         await interaction.showModal(modal);
     },
 
-    async handleModal(interaction) {
+    async handleModal(interaction: ModalSubmitInteraction) {
         const title = interaction.fields.getTextInputValue('title');
         const message = interaction.fields.getTextInputValue('message');
 
+        const member = interaction.member as GuildMember;
+
         const embed = new EmbedBuilder()
             .setAuthor({
-                name: interaction.member.displayName,
-                iconURL: interaction.member.displayAvatarURL(),
+                name: member.displayName,
+                iconURL: member.displayAvatarURL(),
             })
             .setTitle(title)
             .setDescription(message);
 
         interaction.reply({ embeds: [embed] });
-    },
-};
+    }
+}
