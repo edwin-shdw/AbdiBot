@@ -1,11 +1,11 @@
-import { CommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('info')
         .setDescription('Zeige Infos über den Bot'),
 
-    async execute(interaction: CommandInteraction) {
+    async execute(interaction: ChatInputCommandInteraction) {
         const silently = Boolean(interaction.guild);
         const embed = new EmbedBuilder()
             .setColor(0x5865F2)

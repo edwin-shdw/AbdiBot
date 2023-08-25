@@ -2,7 +2,7 @@ import {
     ActionRowBuilder,
     ButtonBuilder,
     ButtonStyle,
-    CommandInteraction,
+    ChatInputCommandInteraction,
     EmbedBuilder,
     MessageActionRowComponentBuilder,
     PermissionFlagsBits,
@@ -17,7 +17,7 @@ module.exports = {
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .setDMPermission(false),
 
-    async execute(interaction: CommandInteraction) {
+    async execute(interaction: ChatInputCommandInteraction) {
         const channel = await interaction.guild?.channels.fetch(interaction.channelId) as TextBasedChannel;
 
         // JOB ROLES

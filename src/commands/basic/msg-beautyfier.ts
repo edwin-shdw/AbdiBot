@@ -1,6 +1,6 @@
 import { 
     ActionRowBuilder,
-    CommandInteraction,
+    ChatInputCommandInteraction,
     EmbedBuilder,
     GuildMember,
     ModalActionRowComponentBuilder,
@@ -16,7 +16,7 @@ module.exports = {
         .setName('msg-beautyfier')
         .setDescription('Embede deine Nachricht um sie leserlicher und stylischer zu machen'),
 
-    async execute(interaction: CommandInteraction) {
+    async execute(interaction: ChatInputCommandInteraction) {
         const modal = new ModalBuilder()
             .setCustomId('msg-beautyfier')
             .setTitle('Message Beautyfier');
