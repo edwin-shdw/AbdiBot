@@ -1,5 +1,5 @@
-const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
-const { descriptions } = require('../../assets/commands/help.json');
+import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import { descriptions } from '../../data/help.json';
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -7,7 +7,7 @@ module.exports = {
         .setDescription('Zeigt eine Liste mit allen Commands und Erklärungen')
         .setDMPermission(false),
 
-    async execute(interaction) {
+    async execute(interaction: ChatInputCommandInteraction) {
         const commands = await interaction.client.application.commands.fetch();
 
         const embed = new EmbedBuilder()
@@ -15,10 +15,11 @@ module.exports = {
             .setDescription('Hier ist eine Liste mit allen Commands und einer erklärung:')
             .addFields(
                 commands.filter(command => !command.defaultMemberPermissions).map(command => {
-                    return { name: `</${command.name}:${command.id}>`, value: ('```' + `${descriptions[command.name]}` + '```') };
+                    const descriptionKey = command.name as keyof typeof descriptions;
+                    return { name: `</${command.name}:${command.id}>`, value: ('```' + `${descriptions[descriptionKey]}` + '```') };
                 }),
             );
 
         interaction.reply({ embeds: [embed], ephemeral: true });
-    },
-};
+    }
+}

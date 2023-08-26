@@ -1,10 +1,11 @@
-const { Events, EmbedBuilder } = require('discord.js');
+import { Events, EmbedBuilder, GuildMember, roleMention } from 'discord.js';
+import { roleChannelID } from '../configs/config.json';
 
 module.exports = {
     name: Events.GuildMemberAdd,
-    async execute(member) {
+    async execute(member: GuildMember) {
         const client = member.client;
-        const roleChannel = await client.channels.fetch('1101249797811343501');
+        const roleChannel = await client.channels.fetch(roleChannelID);
         const embed = new EmbedBuilder()
             .setTitle(`Hey ${member.user.username}!`)
             .setDescription(
@@ -20,5 +21,5 @@ module.exports = {
         catch {
             console.log(`Could not message ${member.user.username}`);
         }
-    },
-};
+    }
+}

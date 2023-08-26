@@ -1,9 +1,10 @@
-const { REST, Routes } = require('discord.js');
-const { applicationID, botToken } = require('./config.json');
-const fs = require('node:fs');
-const path = require('node:path');
+import { applicationID, botToken } from './configs/config.json';
+import fs from 'node:fs';
+import path from 'node:path';
+import Command from './interfaces/command';
+import { REST, RESTPostAPIChatInputApplicationCommandsJSONBody, Routes } from 'discord.js';
 
-const commands = [];
+const commands: RESTPostAPIChatInputApplicationCommandsJSONBody[] = [];
 const folderPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(folderPath);
 
@@ -12,7 +13,7 @@ for(const folder of commandFolders) {
     const commandFiles = fs.readdirSync(commandPath).filter(file => file.endsWith('.js'));
     for(const file of commandFiles) {
         const filePath = path.join(commandPath, file);
-        const command = require(filePath);
+        const command = require(filePath) as Command;
         if('data' in command && 'execute' in command) {
             commands.push(command.data.toJSON());
         }
@@ -27,7 +28,7 @@ const rest = new REST().setToken(botToken);
 (async () => {
     try{
         console.log(`Started refreshing ${commands.length} application (/) commands.`);
-        const data = await rest.put(
+        const data: any = await rest.put(
             Routes.applicationCommands(applicationID),
             { body: commands },
         );
