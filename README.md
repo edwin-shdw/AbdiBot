@@ -30,9 +30,10 @@
     ```shell
     npm run develop
     ```
-    This will start the bot with [node-supervisor](https://www.npmjs.com/package/supervisor) which
-    will restart the node application whenever file changes are detected.
-    (Currently requires `npx tsc --watch` to run in parallel)
+    This will start the bot with [ts-node](https://www.npmjs.com/package/ts-node) and
+    [nodemon](https://www.npmjs.com/package/nodemon) which will restart the node application
+    whenever file changes are detected. Thanks to ts-node running a new build on each file change
+    is no longer required.
 
 5. **Deployment**
 
@@ -40,6 +41,8 @@
     ```shell
     npm run deploy
     ```
+    Keep in mind that you will need to run a build before. (At least for the `deploy-commands`
+    script)
 
 6. **Usefull links**
     - [discord.js](https://discord.js.org/#/)
