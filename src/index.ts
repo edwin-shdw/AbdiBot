@@ -8,6 +8,8 @@ import AbdiClient from './structures/AbdiClient';
 import Command from './interfaces/command';
 import { botToken } from './configs/config.json';
 
+const fileMode = __filename.slice(-3);
+
 const client = new AbdiClient({
     intents: [
         GatewayIntentBits.Guilds,
@@ -27,7 +29,7 @@ const commandFolders = fs.readdirSync(foldersPath);
 
 for(const folder of commandFolders) {
     const commandsPath = path.join(foldersPath, folder);
-    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith(fileMode));
     for(const file of commandFiles) {
         const filePath = path.join(commandsPath, file);
         const command: Command = require(filePath);
